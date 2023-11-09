@@ -29,7 +29,7 @@ def validateLocation(location_data):
 
 def testLocation(location_data):
    return_data = []
-   x = locationCollection.find({"geometry":{
+   QueryData = locationCollection.find({"geometry":{
   "$nearSphere": {
     "$geometry": {
         "type" : "Point",
@@ -39,10 +39,10 @@ def testLocation(location_data):
   }
 }},{"_id":   0, "geometry":   0})
    
-   for i in x:
+   for i in QueryData:
       return_data.append(i)
    
-   if x is None:
+   if QueryData is None:
       x = {"Error": "Outside service area","province": "*c unknown"}
    return(return_data)
 
